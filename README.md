@@ -1,6 +1,6 @@
 # c10_c_api
 
-A C-api wrapper around pytorch's c10 library. Currently only wraps `CUDACachingAllocator`.
+A C-api wrapper around pytorch's c10 library. Currently only wraps `CUDACachingAllocator`, `THCCachingHostAllocator`.
 
 It may be used as an allocator in [petalisp-cuda](https://github.com/theHamsta/petalisp-cuda).
 

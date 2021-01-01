@@ -17,8 +17,14 @@ void *CUDACachingAllocator_getBaseAllocation(void *ptr, size_t *size);
 void CUDACachingAllocator_resetAccumulatedStats(int device);
 void CUDACachingAllocator_resetPeakStats(int device);
 
-void *CPUCachingAllocator_raw_alloc(size_t nbytes);
-void CPUCachingAllocator_raw_delete(void *ptr);
+// This is mainly calling memalign
+void *CPUAllocator_raw_alloc(size_t nbytes);
+void CPUAllocator_raw_delete(void *ptr);
+
+void *THCCachingHostAllocator_raw_alloc(size_t nbytes);
+void THCCachingHostAllocator_raw_delete(void *ptr);
+void THCCachingHostAllocator_emptyCache(void);
+
 #ifdef __cplusplus
 }
 #endif

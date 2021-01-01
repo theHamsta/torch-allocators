@@ -16,10 +16,15 @@ auto main(int argc, char **argv) -> int {
   CUDACachingAllocator_raw_delete(allocation);
   std::cout << "Yeah! It worked on GPU." << std::endl;
 
-  void *cpuAllocation = CPUCachingAllocator_raw_alloc(10);
+  void *cpuAllocation = CPUAllocator_raw_alloc(10);
   ((int *)cpuAllocation)[0] = 3;
-  CPUCachingAllocator_raw_delete(cpuAllocation);
+  CPUAllocator_raw_delete(cpuAllocation);
   std::cout << "Yeah! It worked on CPU." << std::endl;
+
+  void *hostAllocation = THCCachingHostAllocator_raw_alloc(10);
+  ((int *)hostAllocation)[0] = 3;
+  THCCachingHostAllocator_raw_delete(hostAllocation);
+  std::cout << "Yeah! It worked with CUDA host allocation." << std::endl;
 
   return EXIT_SUCCESS;
 }

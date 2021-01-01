@@ -2,12 +2,15 @@ cmake_minimum_required(VERSION 3.14...3.17)
 
 project(torch-allocator VERSION "0.1")
 
-set( USE_CUDA ON )
+set (USE_CUDA ON )
 set (BUILD_SHARED_LIBS ON)
 add_subdirectory( c10 )
 
+add_library(THCCachingHostAllocator SHARED THCCachingHostAllocator/THCCachingHostAllocator.cpp)
+target_link_libraries(THCCachingHostAllocator PRIVATE c10_cuda)
+
 add_library(c10_c_api SHARED c10_c_api.cpp)
-target_link_libraries(c10_c_api PUBLIC c10_cuda)
+target_link_libraries(c10_c_api PUBLIC c10_cuda THCCachingHostAllocator)
 
 install(TARGETS c10_c_api 
 	LIBRARY DESTINATION lib

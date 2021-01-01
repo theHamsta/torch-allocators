@@ -1,6 +1,7 @@
+#include "c10_c_api.h"
+#include "THCCachingHostAllocator/THCCachingHostAllocator.h"
 #include "c10/cuda/CUDACachingAllocator.h"
 #include <c10/core/CPUAllocator.h>
-#include "c10_c_api.h"
 
 using namespace c10::cuda;
 
@@ -20,8 +21,8 @@ C10_CUDA_API void CUDACachingAllocator_raw_delete(void *ptr) {
 // C10_CUDA_API Allocator *CUDACachingAllocator_get() {
 // return (void *)CUDACachingAllocator::get();
 //};
-//C10_CUDA_API void CUDACachingAllocator_allocate(size_t n) {
-  //CUDACachingAllocator::get()->allocate(n).get();
+// C10_CUDA_API void CUDACachingAllocator_allocate(size_t n) {
+// CUDACachingAllocator::get()->allocate(n).get();
 //};
 C10_CUDA_API void CUDACachingAllocator_init(int device_count) {
   CUDACachingAllocator::init(device_count);
@@ -54,11 +55,21 @@ C10_CUDA_API void CUDACachingAllocator_resetPeakStats(int device) {
   CUDACachingAllocator::resetPeakStats(device);
 }
 
-C10_CUDA_API void *CPUCachingAllocator_raw_alloc(size_t nbytes) {
+C10_CUDA_API void *CPUAllocator_raw_alloc(size_t nbytes) {
   return c10::GetCPUCachingAllocator()->raw_allocate(nbytes);
 }
-C10_CUDA_API void CPUCachingAllocator_raw_delete(void *ptr) {
+C10_CUDA_API void CPUAllocator_raw_delete(void *ptr) {
   c10::GetCPUCachingAllocator()->raw_deallocate(ptr);
 };
 
+C10_CUDA_API void *THCCachingHostAllocator_raw_alloc(size_t nbytes) {
+  return c10::getTHCCachingHostAllocator()->raw_allocate(nbytes);
+}
+C10_CUDA_API void THCCachingHostAllocator_raw_delete(void *ptr) {
+  c10::getTHCCachingHostAllocator()->raw_deallocate(ptr);
+};
+
+C10_CUDA_API void THCCachingHostAllocator_emptyCache(void) {
+  c10::THCCachingHostAllocator_emptyCache();
+};
 }
