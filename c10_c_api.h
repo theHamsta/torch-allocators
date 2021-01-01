@@ -1,10 +1,3 @@
-/*
- * c10_c_api.h
- * Copyright (C) 2021 Stephan Seitz <stephan.seitz@fau.de>
- *
- * Distributed under terms of the GPLv3 license.
- */
-
 #pragma once
 
 #include <driver_types.h>
