@@ -9,7 +9,7 @@ build:
 release:
     mkdir -p release
     cd release && cmake -DCMAKE_BUILD_TYPE=Release -G Ninja -DCMAKE_CXX_FLAGS=-fcolor-diagnostics -DCMAKE_C_FLAGS=-fcolor-diagnostics ..
-    cd release && cmake --build . -- -jrelease8
+    cd release && cmake --build . -- -j8
 
 install: release
     cd release && sudo ninja install
