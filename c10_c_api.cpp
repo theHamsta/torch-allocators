@@ -1,4 +1,5 @@
 #include "c10/cuda/CUDACachingAllocator.h"
+#include "c10_c_api.h"
 
 using namespace c10::cuda;
 
