@@ -6,11 +6,8 @@ set (USE_CUDA ON )
 set (BUILD_SHARED_LIBS ON)
 add_subdirectory( c10 )
 
-add_library(THCCachingHostAllocator SHARED THCCachingHostAllocator/THCCachingHostAllocator.cpp)
-target_link_libraries(THCCachingHostAllocator PRIVATE c10_cuda)
-
-add_library(c10_c_api SHARED c10_c_api.cpp)
-target_link_libraries(c10_c_api PUBLIC c10_cuda THCCachingHostAllocator)
+add_library(c10_c_api SHARED c10_c_api.cpp THCCachingHostAllocator/THCCachingHostAllocator.cpp)
+target_link_libraries(c10_c_api PUBLIC c10_cuda)
 
 install(TARGETS c10_c_api 
 	LIBRARY DESTINATION lib
