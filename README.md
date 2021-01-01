@@ -11,7 +11,7 @@ cmake --build . -- -j8
 sudo ninja install
 ```
 
-Replace ninja by make if you don't use ninja (also remove `-G Ninja`).
+Replace `ninja` by `make` if you don't use ninja (also remove `-G Ninja`).
 
 ## License
 
