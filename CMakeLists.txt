@@ -2,9 +2,6 @@ cmake_minimum_required(VERSION 3.14...3.17)
 
 project(torch-allocator VERSION "0.1")
 
-# Define CMAKE_INSTALL_xxx: LIBDIR, INCLUDEDIR
-include(GNUInstallDirs)
-
 set( USE_CUDA ON )
 set (BUILD_SHARED_LIBS ON)
 add_subdirectory( c10 )
