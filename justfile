@@ -14,6 +14,10 @@ release:
 install: release
     cd release && sudo ninja install
 
+test: release
+    cd release && sudo ninja test
+    cd release && ./test/test
+
 clean:
     rm -rf debug
     rm -rf release
