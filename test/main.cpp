@@ -9,7 +9,7 @@
 #include <cstdlib>
 #include <iostream>
 
-auto main(int argc, char **argv) -> int {
+auto main() -> int {
   const int ONE_GPU = 1;
   CUDACachingAllocator_init(ONE_GPU);
   void *allocation = CUDACachingAllocator_raw_alloc(10);
