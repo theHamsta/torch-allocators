@@ -16,3 +16,7 @@ Replace ninja by make if you don't use ninja (also remove `-G Ninja`).
 ## License
 
 Since this is only a build wrapper around c10, it has the same license terms as pytorch/c10
+
+## TODO
+
+![cpp2c](https://github.com/samanbarghi/CPP2C) may be a good tools if more API should be exposed.
