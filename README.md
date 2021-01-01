@@ -11,3 +11,7 @@ sudo ninja install
 ```
 
 Replace ninja by make if you don't use ninja (also remove `-G Ninja`).
+
+# LICENSE
+
+Since this is only a build wrapper around c10, it has the same license terms as pytorch/c10
