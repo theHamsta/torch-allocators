@@ -16,6 +16,9 @@ void CUDACachingAllocator_cacheInfo(int dev_id, size_t *cachedAndFree, size_t *l
 void *CUDACachingAllocator_getBaseAllocation(void *ptr, size_t *size);
 void CUDACachingAllocator_resetAccumulatedStats(int device);
 void CUDACachingAllocator_resetPeakStats(int device);
+
+void *CPUCachingAllocator_raw_alloc(size_t nbytes);
+void CPUCachingAllocator_raw_delete(void *ptr);
 #ifdef __cplusplus
 }
 #endif

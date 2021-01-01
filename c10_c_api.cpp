@@ -1,4 +1,5 @@
 #include "c10/cuda/CUDACachingAllocator.h"
+#include <c10/core/CPUAllocator.h>
 #include "c10_c_api.h"
 
 using namespace c10::cuda;
@@ -52,4 +53,12 @@ C10_CUDA_API void CUDACachingAllocator_resetAccumulatedStats(int device) {
 C10_CUDA_API void CUDACachingAllocator_resetPeakStats(int device) {
   CUDACachingAllocator::resetPeakStats(device);
 }
+
+C10_CUDA_API void *CPUCachingAllocator_raw_alloc(size_t nbytes) {
+  return c10::GetCPUCachingAllocator()->raw_allocate(nbytes);
+}
+C10_CUDA_API void CPUCachingAllocator_raw_delete(void *ptr) {
+  c10::GetCPUCachingAllocator()->raw_deallocate(ptr);
+};
+
 }

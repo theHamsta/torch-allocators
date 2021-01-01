@@ -15,7 +15,7 @@ install: release
     cd release && sudo ninja install
 
 test: release
-    cd release && sudo ninja test
+    cd release && ninja test
     cd release && ./test/test
 
 clean:
