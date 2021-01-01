@@ -2,6 +2,7 @@
 
 A C-api wrapper around pytorch's c10 library. Currently only wraps `CUDACachingAllocator`.
 
+It may be used as an allocator in [petalisp-cuda](https://github.com/theHamsta/petalisp-cuda).
 
 ```
 mkdir -p release
