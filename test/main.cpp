@@ -17,8 +17,8 @@ auto main( int argc, char** argv ) -> int
     CUDACachingAllocator_raw_delete(allocation);
     std::cout << "Yeah! It worked on GPU." << std::endl;
 
-    void* cpuAllocation = CUDACachingAllocator_raw_alloc(10);
-    CUDACachingAllocator_raw_delete(cpuAllocation);
+    void* cpuAllocation = CPUCachingAllocator_raw_alloc(10);
+    CPUCachingAllocator_raw_delete(cpuAllocation);
     std::cout << "Yeah! It worked on CPU." << std::endl;
     
     return EXIT_SUCCESS;
